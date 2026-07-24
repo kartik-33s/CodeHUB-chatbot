@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>India in the World - Global Indicators Platform</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --paper: #ffffff;
+      --ink: #18212f;
+      --muted: #657184;
+      --line: #dbe1ea;
+      --teal: #087f8c;
+      --green: #28865f;
+      --amber: #c98516;
+      --red: #b84848;
+      --blue: #315cbb;
+      --violet: #7c4d9e;
+      --shadow: 0 18px 45px rgba(34, 49, 75, .10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(8, 127, 140, .14), transparent 28rem),
+        radial-gradient(circle at 84% 0%, rgba(201, 133, 22, .14), transparent 24rem),
+        linear-gradient(180deg, #f8fafc 0%, var(--bg) 38%, #eef2f6 100%);
+      min-height: 100vh;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(24, 33, 47, .12);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(8, 127, 140, .95), rgba(49, 92, 187, .92)),
+        linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, .55) 49%, transparent 52%);
+      position: relative;
+      box-shadow: 0 10px 25px rgba(8, 127, 140, .22);
+    }
+
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 2px solid rgba(255, 255, 255, .86);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(12deg);
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      display: block;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a, .btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .72);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-weight: 650;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .btn.small {
+      padding: 7px 9px;
+      font-size: 12px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 6px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(219, 225, 234, .86);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .intro {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr);
+      gap: 24px;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: clamp(34px, 4.8vw, 62px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin: 0 0 18px;
+      max-width: 780px;
+    }
+
+    .lead {
+      color: #435066;
+      margin: 0;
+      max-width: 780px;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .prompt {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 14px;
+      border: 1px solid rgba(219, 225, 234, .9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .68);
+      min-width: 0;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .metric strong {
+      font-size: 26px;
+      line-height: 1.1;
+      display: block;
+    }
+
+    .map-card {
+      padding: 18px;
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      grid-template-rows: auto minmax(220px, 1fr) auto;
+      gap: 12px;
+    }
+
+    .map-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .map-title h2, .section-title h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .map-title p, .section-title p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: rgba(8, 127, 140, .10);
+      color: #076872;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .radar {
+      width: 100%;
+      min-height: 238px;
+      display: block;
+    }
+
+    .radar text {
+      font-size: 11px;
+      fill: #536174;
+      font-weight: 650;
+    }
+
+    .radar .ring {
+      fill: none;
+      stroke: rgba(101, 113, 132, .25);
+      stroke-width: 1;
+    }
+
+    .radar .axis {
+      stroke: rgba(101, 113, 132, .32);
+      stroke-width: 1;
+    }
+
+    .radar .shape {
+      fill: rgba(8, 127, 140, .18);
+      stroke: var(--teal);
+      stroke-width: 2.5;
+    }
+
+    .radar .dot {
+      fill: var(--teal);
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    .rank-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .rank-pill {
+      border-radius: 8px;
+      background: #f5f7fb;
+      border: 1px solid var(--line);
+      padding: 10px;
+      min-width: 0;
+    }
+
+    .rank-pill b {
+      display: block;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .rank-pill span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .toolbar {
+      margin: 18px 0;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: minmax(220px, 1.2fr) repeat(3, minmax(160px, .6fr));
+      gap: 10px;
+      align-items: end;
+    }
+
+    .chat-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: end;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: #334054;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 10px 11px;
+      min-height: 42px;
+      outline-color: var(--teal);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .indicator {
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--paper);
+      border: 1px solid rgba(219, 225, 234, .94);
+      box-shadow: 0 12px 28px rgba(34, 49, 75, .07);
+      min-height: 250px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .indicator::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent, var(--teal));
+    }
+
+    .indicator-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .indicator h3 {
+      font-size: 16px;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .category {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .rank {
+      text-align: right;
+      flex: 0 0 auto;
+    }
+
+    .rank strong {
+      display: block;
+      font-size: 31px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rank span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .score-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .score {
+      padding: 6px 8px;
+      border-radius: 8px;
+      background: #f3f6fa;
+      color: #344156;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .trend {
+      color: var(--trend-color, var(--muted));
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .bar {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: #e9eef5;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      background: var(--accent, var(--teal));
+      border-radius: inherit;
+    }
+
+    .why {
+      color: #4b586b;
+      font-size: 13px;
+      line-height: 1.48;
+      margin: 0;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid #edf1f6;
+      padding-top: 11px;
+    }
+
+    .mini-link {
+      border: 0;
+      background: transparent;
+      color: var(--blue);
+      padding: 0;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .quality {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 18px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .control-stack {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .insight-box {
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 172px;
+    }
+
+    .insight-box h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .insight-box p {
+      margin: 0;
+      color: #d4d9e1;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .chart-card {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 340px;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .world-map {
+      width: 100%;
+      min-height: 360px;
+      display: block;
+      background: linear-gradient(180deg, #eef7fb 0%, #f8fbff 100%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .land {
+      fill: #d9e5dc;
+      stroke: #afc2b5;
+      stroke-width: 1;
+    }
+
+    .pin {
+      cursor: pointer;
+    }
+
+    .pin circle {
+      fill: var(--blue);
+      stroke: white;
+      stroke-width: 3;
+    }
+
+    .pin text {
+      fill: #253348;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .map-detail {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .map-detail-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .map-detail-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .map-detail-card p {
+      color: #4b586b;
+      margin: 0;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    .catalog-toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 14px;
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .catalog-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      min-width: 0;
+    }
+
+    .catalog-card h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .catalog-card ul {
+      padding-left: 18px;
+      margin: 0;
+      color: #435066;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .coverage-live {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .coverage-planned {
+      color: var(--muted);
+    }
+
+    .readiness-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .readiness-item {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .readiness-item b {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .readiness-item span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      display: block;
+    }
+
+    .chart {
+      width: 100%;
+      height: 300px;
+      display: block;
+    }
+
+    .axis-label {
+      fill: #637083;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .bar-label {
+      fill: #263244;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .source-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .source-table th, .source-table td {
+      text-align: left;
+      padding: 11px 12px;
+      border-bottom: 1px solid #edf1f6;
+      vertical-align: top;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .source-table th {
+      color: #344156;
+      background: #f7f9fc;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .drawer {
+      position: fixed;
+      inset: 0;
+      display: none;
+      z-index: 10;
+    }
+
+    .drawer.open {
+      display: block;
+    }
+
+    .shade {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 16, 26, .42);
+    }
+
+    .drawer-panel {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      bottom: 16px;
+      width: min(520px, calc(100% - 32px));
+      overflow: auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .26);
+      padding: 20px;
+    }
+
+    .drawer-panel h2 {
+      margin: 0 0 6px;
+      font-size: 24px;
+    }
+
+    .drawer-panel p {
+      color: #4b586b;
+      line-height: 1.55;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .detail-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #f8fafc;
+    }
+
+    .detail-item b {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .footer {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .hero, .intro, .compare-grid, .map-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid, .catalog, .readiness-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .shell {
+        width: min(100% - 20px, 760px);
+        padding-top: 12px;
+      }
+
+      .topbar, .section-title {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .intro {
+        padding: 20px;
+      }
+
+      .prompt, .rank-strip, .grid, .toolbar, .catalog, .readiness-grid, .chat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .map-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 520px) {
+      h1 {
+        font-size: 34px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      .metric strong {
+        font-size: 23px;
+      }
+
+      .indicator {
+        min-height: 0;
+      }
+
+      .drawer-panel {
+        inset: 8px;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <strong>India in the World</strong>
+          <span>Global indicators dashboard</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Sections">
+        <a href="#indicators">Indicators</a>
+        <a href="#world">Map</a>
+        <a href="#compare">Compare</a>
+        <a href="#catalog">Catalog</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-label="India global standing overview">
+      <div class="panel intro">
+        <div>
+          <h1>Where does India stand on the global stage?</h1>
+          <p class="lead">A single place to scan India's economic scale, human development, governance, technology, equality, environment, and quality-of-life rankings - with context, trends, peer comparisons, and transparent source notes.</p>
+          <div class="prompt" aria-label="Headline metrics">
+            <div class="metric">
+              <span>Latest indicators loaded</span>
+              <strong id="metricCount">0</strong>
+            </div>
+            <div class="metric">
+              <span>Strongest current rank</span>
+              <strong id="bestRank">#0</strong>
+            </div>
+            <div class="metric">
+              <span>Areas needing attention</span>
+              <strong id="riskCount">0</strong>
+            </div>
+          </div>
+        </div>
+        <div class="map-card">
+          <div class="map-title">
+            <div>
+              <h2>Progress Compass</h2>
+              <p>Each spoke converts rank into a percentile, so higher is better across categories.</p>
+            </div>
+            <span class="badge">India focus</span>
+          </div>
+          <svg class="radar" id="radar" viewBox="0 0 420 280" role="img" aria-label="Radar chart of India's relative rank percentiles"></svg>
+          <div class="rank-strip" id="rankStrip"></div>
+        </div>
+      </div>
+
+      <aside class="panel map-card">
+        <div class="map-title">
+          <div>
+            <h2>AI Insight Studio</h2>
+            <p>Pick a lens and generate a concise local analysis from the loaded indicators.</p>
+          </div>
+        </div>
+        <label>
+          Analysis lens
+          <select id="insightLens">
+            <option value="balanced">Balanced national progress</option>
+            <option value="economy">Growth and competitiveness</option>
+            <option value="people">People and quality of life</option>
+            <option value="institutions">Governance and rights</option>
+            <option value="environment">Environment and sustainability</option>
+          </select>
+        </label>
+        <button class="btn primary" id="generateInsight" type="button">Generate insight</button>
+        <div class="chat-row">
+          <label>
+            Ask the dashboard
+            <input id="nlQuery" type="search" placeholder="Show India's innovation ranking">
+          </label>
+          <button class="btn" id="askInsight" type="button">Ask</button>
+        </div>
+        <div class="insight-box" aria-live="polite">
+          <h3 id="insightTitle">Balanced national progress</h3>
+          <p id="insightText"></p>
+        </div>
+        <button class="btn" id="reportCard" type="button">Annual report card</button>
+        <button class="btn" id="exportCsv" type="button">Export CSV</button>
+      </aside>
+    </section>
+
+    <section class="panel toolbar" aria-label="Indicator filters">
+      <label>
+        Search
+        <input id="search" type="search" placeholder="Search index, source, reason, category">
+      </label>
+      <label>
+        Category
+        <select id="category">
+          <option value="All">All categories</option>
+        </select>
+      </label>
+      <label>
+        Rank band
+        <select id="band">
+          <option value="All">All ranks</option>
+          <option value="top">Top third</option>
+          <option value="middle">Middle third</option>
+          <option value="bottom">Bottom third</option>
+        </select>
+      </label>
+      <label>
+        Sort by
+        <select id="sort">
+          <option value="rank">Best rank</option>
+          <option value="risk">Needs attention</option>
+          <option value="category">Category</option>
+          <option value="year">Latest year</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="indicators" class="grid" aria-label="Indicator cards"></section>
+
+    <section id="world" class="panel section">
+      <div class="section-title">
+        <div>
+          <h2>Interactive World Map</h2>
+          <p>Country pins summarize the selected indicator across India and peer countries.</p>
+        </div>
+        <label>
+          Map indicator
+          <select id="mapIndicator"></select>
+        </label>
+      </div>
+      <div class="map-grid">
+        <svg class="world-map" id="worldMap" viewBox="0 0 920 430" role="img" aria-label="World map with comparison country pins">
+          <path class="land" d="M142,118 C110,92 72,99 58,129 C43,163 68,184 92,197 C128,216 150,195 172,213 C201,237 240,219 251,187 C265,148 207,137 188,118 C173,104 159,132 142,118 Z"></path>
+          <path class="land" d="M243,245 C215,264 207,308 230,337 C249,361 280,350 288,318 C296,287 277,257 243,245 Z"></path>
+          <path class="land" d="M404,117 C357,103 306,118 289,154 C267,200 304,230 344,218 C385,206 409,226 443,206 C473,189 467,143 404,117 Z"></path>
+          <path class="land" d="M480,184 C447,188 429,214 442,244 C455,274 495,282 516,255 C538,226 523,188 480,184 Z"></path>
+          <path class="land" d="M556,114 C508,122 494,154 520,185 C551,221 603,197 639,221 C681,249 744,234 773,194 C802,154 764,115 707,119 C655,123 617,99 556,114 Z"></path>
+          <path class="land" d="M691,266 C650,278 642,325 673,350 C704,375 754,359 780,329 C806,300 762,251 691,266 Z"></path>
+          <path class="land" d="M797,286 C826,278 864,299 872,330 C879,357 851,378 818,365 C785,352 768,306 797,286 Z"></path>
+          <g id="mapPins"></g>
+        </svg>
+        <div class="map-detail">
+          <div class="map-detail-card">
+            <h3 id="mapCountry">India</h3>
+            <p id="mapText"></p>
+          </div>
+          <div class="map-detail-card">
+            <h3>What this map is for</h3>
+            <p>Production should replace these curated peer pins with full country geometries from each source dataset. The interaction model is already here: choose an indicator, select a country, then inspect rank context.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare" class="panel section">
+      <div class="section-title">
+        <div>
+          <h2>Compare Countries</h2>
+          <p>Selected peer values are included for the prototype dataset. Full production coverage would attach each index's full country file.</p>
+        </div>
+      </div>
+      <div class="compare-grid">
+        <div class="control-stack">
+          <label>
+            Indicator
+            <select id="compareIndicator"></select>
+          </label>
+          <label>
+            Peer group
+            <select id="peerGroup">
+              <option value="global">Global anchors</option>
+              <option value="southasia">South Asia</option>
+              <option value="emerging">Large emerging peers</option>
+            </select>
+          </label>
+          <label>
+            Trend line
+            <select id="trendIndicator"></select>
+          </label>
+          <div class="insight-box">
+            <h3 id="compareTitle">Comparison note</h3>
+            <p id="compareText"></p>
+          </div>
+        </div>
+        <div class="chart-card">
+          <svg class="chart" id="compareChart" viewBox="0 0 760 300" role="img" aria-label="Country rank comparison chart"></svg>
+          <svg class="chart" id="trendChart" viewBox="0 0 760 300" role="img" aria-label="Historical trend chart"></svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="panel section">
+      <div class="section-title">
+        <div>
+          <h2>Required Indicator Catalog</h2>
+          <p>The report asks for broad coverage across ten categories. Green items are represented in this prototype dataset; the rest are ready as ingestion targets.</p>
+        </div>
+      </div>
+      <div class="catalog-toolbar" id="catalogTabs" aria-label="Catalog categories"></div>
+      <div class="catalog" id="catalogGrid"></div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-title">
+        <div>
+          <h2>Challenge Readiness</h2>
+          <p>Mapped directly from the report's judging criteria and deliverables.</p>
+        </div>
+      </div>
+      <div class="readiness-grid" id="readinessGrid"></div>
+    </section>
+
+    <section id="sources" class="panel section">
+      <div class="section-title">
+        <div>
+          <h2>Source Ledger</h2>
+          <p>Every indicator shown above carries its publication year, source owner, and source link.</p>
+        </div>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="source-table">
+          <thead>
+            <tr>
+              <th>Indicator</th>
+              <th>Owner</th>
+              <th>Latest value used</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody id="sourceRows"></tbody>
+        </table>
+      </div>
+      <p class="footer">Prototype dataset compiled July 2026. Rankings use the latest source pages found during build; methodology shifts can make cross-year rank changes imperfect.</p>
+    </section>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="shade" data-close></div>
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <button class="btn" type="button" data-close>Close</button>
+      <h2 id="drawerTitle"></h2>
+      <p id="drawerIntro"></p>
+      <div class="detail-list" id="drawerDetails"></div>
+      <a id="drawerSource" href="#" target="_blank" rel="noreferrer">Open source</a>
+    </div>
+  </aside>
+
+  <script>
+    const indicators = [
+      {
+        id: "gdp-nominal",
+        name: "Nominal GDP",
+        category: "Economy",
+        owner: "IMF World Economic Outlook",
+        year: 2026,
+        rank: 6,
+        total: 196,
+        score: "$3.92T estimate",
+        direction: "higher",
+        trend: "Strong growth, rank sensitive to exchange rates",
+        why: "India remains one of the largest and fastest-growing major economies, but nominal rank can move with currency changes and source revisions.",
+        source: "https://www.imf.org/external/datamapper/profile/IND/WEO",
+        accent: "#087f8c",
+        peers: { "India": 6, "United States": 1, "China": 2, "Germany": 3, "Japan": 4, "United Kingdom": 5, "Brazil": 11, "Indonesia": 17 },
+        trendData: [[2021, 6], [2022, 5], [2023, 5], [2024, 5], [2025, 6]]
+      },
+      {
+        id: "gii",
+        name: "Global Innovation Index",
+        category: "Innovation",
+        owner: "WIPO",
+        year: 2025,
+        rank: 38,
+        total: 139,
+        score: "Top lower-middle-income economy",
+        direction: "higher",
+        trend: "Up 1 rank",
+        why: "Strengths include ICT services exports, venture capital activity, unicorn valuation, and knowledge outputs; infrastructure and R&D spending remain constraints.",
+        source: "https://www.wipo.int/web-publications/global-innovation-index-2025/en/gii-2025-results.html",
+        accent: "#315cbb",
+        peers: { "India": 38, "China": 10, "United States": 3, "Germany": 11, "Brazil": 52, "Indonesia": 55, "Pakistan": 114, "Bangladesh": 105 },
+        trendData: [[2020, 48], [2021, 46], [2022, 40], [2023, 40], [2024, 39], [2025, 38]]
+      },
+      {
+        id: "hdi",
+        name: "Human Development Index",
+        category: "People",
+        owner: "UNDP",
+        year: 2025,
+        rank: 130,
+        total: 193,
+        score: "0.685",
+        direction: "higher",
+        trend: "Up 3 ranks",
+        why: "India improved in life expectancy, schooling and income, but remains in the medium human development group and loses substantial value to inequality.",
+        source: "https://www.undp.org/india/press-releases/indias-human-development-continues-make-progress-ranks-130-out-193-countries",
+        accent: "#28865f",
+        peers: { "India": 130, "China": 75, "United States": 20, "Germany": 7, "Brazil": 89, "Indonesia": 113, "Bangladesh": 130, "Pakistan": 168 },
+        trendData: [[2019, 129], [2020, 132], [2021, 132], [2022, 133], [2023, 130]]
+      },
+      {
+        id: "sdg",
+        name: "SDG Index",
+        category: "Sustainability",
+        owner: "Sustainable Development Report",
+        year: 2025,
+        rank: 99,
+        total: 167,
+        score: "66.95",
+        direction: "higher",
+        trend: "Up 10 ranks",
+        why: "India entered the top 100 for the first time, with progress across several goals but continued pressure on climate, pollution, and urban sustainability.",
+        source: "https://dashboards.sdgindex.org/rankings/",
+        accent: "#28865f",
+        peers: { "India": 99, "China": 49, "United States": 44, "Brazil": 53, "Indonesia": 77, "Nepal": 85, "Bangladesh": 114, "Pakistan": 140 },
+        trendData: [[2021, 120], [2022, 121], [2023, 112], [2024, 109], [2025, 99]]
+      },
+      {
+        id: "nri",
+        name: "Network Readiness Index",
+        category: "Technology",
+        owner: "Portulans Institute",
+        year: 2025,
+        rank: 45,
+        total: 127,
+        score: "54.43",
+        direction: "higher",
+        trend: "Up 4 ranks from NRI 2024",
+        why: "India scores strongly on ICT services exports, AI scientific publications, domestic market scale, and telecom investment; inclusion and privacy remain gaps.",
+        source: "https://networkreadinessindex.org/country/india/",
+        accent: "#087f8c",
+        peers: { "India": 45, "United States": 1, "China": 24, "Germany": 8, "Brazil": 55, "Indonesia": 58, "Vietnam": 40, "Thailand": 44 },
+        trendData: [[2021, 67], [2022, 61], [2023, 60], [2024, 49], [2025, 45]]
+      },
+      {
+        id: "ai-readiness",
+        name: "Government AI Readiness",
+        category: "Technology",
+        owner: "Oxford Insights",
+        year: 2025,
+        rank: 27,
+        total: 195,
+        score: "66.55",
+        direction: "higher",
+        trend: "Leads South and Central Asia",
+        why: "India benefits from digital public infrastructure, a large tech workforce, startup depth, and the IndiaAI Mission; public-sector capacity and data readiness remain uneven.",
+        source: "https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/",
+        accent: "#7c4d9e",
+        peers: { "India": 27, "United States": 1, "China": 6, "Germany": 13, "Singapore": 3, "United Kingdom": 2, "Brazil": 39, "Indonesia": 42 },
+        trendData: [[2021, 40], [2022, 40], [2023, 40], [2024, 46], [2025, 27]]
+      },
+      {
+        id: "gender-gap",
+        name: "Global Gender Gap",
+        category: "Equality",
+        owner: "World Economic Forum",
+        year: 2025,
+        rank: 131,
+        total: 148,
+        score: "64.4% parity",
+        direction: "higher",
+        trend: "Down 3 ranks; score improved",
+        why: "Education parity is high, but economic participation and political empowerment pull the overall rank down.",
+        source: "https://www.weforum.org/publications/global-gender-gap-report-2025/in-full/key-findings-3902497c1d/",
+        accent: "#7c4d9e",
+        peers: { "India": 131, "China": 106, "United States": 42, "Germany": 9, "Brazil": 70, "Indonesia": 90, "Bangladesh": 24, "Pakistan": 148 },
+        trendData: [[2020, 112], [2021, 140], [2022, 135], [2023, 127], [2024, 128], [2025, 131]]
+      },
+      {
+        id: "cpi",
+        name: "Corruption Perceptions Index",
+        category: "Governance",
+        owner: "Transparency International",
+        year: 2025,
+        rank: 91,
+        total: 182,
+        score: "39/100",
+        direction: "higher",
+        trend: "Score +1",
+        why: "India sits near the middle of the global table; perceived public-sector corruption remains a drag on institutional trust.",
+        source: "https://www.transparency.org/en/countries/india",
+        accent: "#c98516",
+        peers: { "India": 91, "United States": 28, "China": 78, "Germany": 15, "Brazil": 107, "Indonesia": 99, "Bangladesh": 149, "Pakistan": 135 },
+        trendData: [[2020, 86], [2021, 85], [2022, 85], [2023, 93], [2024, 96], [2025, 91]]
+      },
+      {
+        id: "press",
+        name: "World Press Freedom",
+        category: "Rights",
+        owner: "Reporters Without Borders",
+        year: 2026,
+        rank: 157,
+        total: 180,
+        score: "31.96",
+        direction: "higher",
+        trend: "Down 6 ranks from 2025",
+        why: "India's score is weighed down by political, social, legal, economic, and security indicators for media freedom.",
+        source: "https://rsf.org/en/country/india",
+        accent: "#b84848",
+        peers: { "India": 157, "United States": 57, "China": 178, "Germany": 11, "Brazil": 63, "Indonesia": 127, "Bangladesh": 165, "Pakistan": 158 },
+        trendData: [[2021, 142], [2022, 150], [2023, 161], [2024, 159], [2025, 151], [2026, 157]]
+      },
+      {
+        id: "rule-law",
+        name: "Rule of Law Index",
+        category: "Governance",
+        owner: "World Justice Project",
+        year: 2025,
+        rank: 86,
+        total: 143,
+        score: "0.49",
+        direction: "higher",
+        trend: "Down 6 ranks",
+        why: "Open government ranks relatively well, while civil justice, order and security, and fundamental rights pull down the overall score.",
+        source: "https://worldjusticeproject.org/rule-of-law-index/country/2025/India",
+        accent: "#c98516",
+        peers: { "India": 86, "United States": 27, "China": 92, "Germany": 5, "Brazil": 83, "Indonesia": 68, "Bangladesh": 127, "Pakistan": 130 },
+        trendData: [[2020, 69], [2021, 79], [2022, 77], [2023, 79], [2024, 79], [2025, 86]]
+      },
+      {
+        id: "epi",
+        name: "Environmental Performance",
+        category: "Environment",
+        owner: "Yale EPI",
+        year: 2024,
+        rank: 176,
+        total: 180,
+        score: "27.6",
+        direction: "higher",
+        trend: "10-year score +4.7",
+        why: "Air quality and environmental health are the largest weaknesses, even though agriculture and some climate indicators score better.",
+        source: "https://epi.yale.edu/country/2024/IND",
+        accent: "#b84848",
+        peers: { "India": 176, "United States": 34, "China": 156, "Germany": 10, "Brazil": 50, "Indonesia": 163, "Bangladesh": 175, "Pakistan": 178 },
+        trendData: [[2014, 178], [2016, 141], [2018, 177], [2020, 168], [2022, 180], [2024, 176]]
+      },
+      {
+        id: "peace",
+        name: "Global Peace Index",
+        category: "Quality of Life",
+        owner: "Institute for Economics and Peace",
+        year: 2026,
+        rank: 127,
+        total: 163,
+        score: "2.409",
+        direction: "lower",
+        trend: "Down 12 ranks from 2025",
+        why: "The 2026 index shows deterioration for South Asia, with India affected by internal security, regional tensions, and conflict-linked indicators.",
+        source: "https://gpi.economicsandpeace.org/",
+        accent: "#b84848",
+        peers: { "India": 127, "China": 118, "United States": 134, "Germany": 20, "Brazil": 124, "Indonesia": 44, "Bangladesh": 117, "Pakistan": 145 },
+        trendData: [[2022, 135], [2023, 126], [2024, 116], [2025, 115], [2026, 127]]
+      },
+      {
+        id: "happiness",
+        name: "World Happiness Report",
+        category: "Quality of Life",
+        owner: "Oxford Wellbeing Research Centre",
+        year: 2026,
+        rank: 116,
+        total: 147,
+        score: "4.536",
+        direction: "higher",
+        trend: "Up 2 ranks",
+        why: "India improved slightly but still trails several regional peers; social support and healthy life expectancy remain important explanatory factors.",
+        source: "https://www.worldhappiness.report/ed/2026/international-evidence-on-happiness-and-social-media/",
+        accent: "#315cbb",
+        peers: { "India": 116, "China": 65, "United States": 23, "Germany": 17, "Nepal": 99, "Pakistan": 104, "Bangladesh": 127, "Sri Lanka": 134 },
+        trendData: [[2020, 144], [2021, 139], [2022, 136], [2023, 126], [2025, 118], [2026, 116]]
+      }
+    ];
+
+    const groups = {
+      global: ["India", "United States", "China", "Germany", "Brazil", "Indonesia"],
+      southasia: ["India", "Bangladesh", "Pakistan", "Nepal", "Sri Lanka", "China"],
+      emerging: ["India", "China", "Brazil", "Indonesia", "Pakistan", "Bangladesh"]
+    };
+
+    const categoryEl = document.getElementById("category");
+    const searchEl = document.getElementById("search");
+    const bandEl = document.getElementById("band");
+    const sortEl = document.getElementById("sort");
+    const indicatorsEl = document.getElementById("indicators");
+    const compareIndicatorEl = document.getElementById("compareIndicator");
+    const trendIndicatorEl = document.getElementById("trendIndicator");
+    const peerGroupEl = document.getElementById("peerGroup");
+
+    const pct = item => Math.round(((item.total - item.rank + 1) / item.total) * 100);
+    const band = item => {
+      const p = item.rank / item.total;
+      if (p <= .333) return "top";
+      if (p <= .666) return "middle";
+      return "bottom";
+    };
+
+    function init() {
+      const categories = [...new Set(indicators.map(d => d.category))].sort();
+      categories.forEach(c => categoryEl.insertAdjacentHTML("beforeend", `<option value="${c}">${c}</option>`));
+      indicators.forEach(d => {
+        compareIndicatorEl.insertAdjacentHTML("beforeend", `<option value="${d.id}">${d.name}</option>`);
+        trendIndicatorEl.insertAdjacentHTML("beforeend", `<option value="${d.id}">${d.name}</option>`);
+      });
+      compareIndicatorEl.value = "gii";
+      trendIndicatorEl.value = "hdi";
+      renderStats();
+      renderRadar();
+      renderCards();
+      renderCompare();
+      renderTrend();
+      renderSources();
+      generateInsight();
+    }
+
+    function renderStats() {
+      const best = [...indicators].sort((a, b) => (a.rank / a.total) - (b.rank / b.total))[0];
+      document.getElementById("metricCount").textContent = indicators.length;
+      document.getElementById("bestRank").textContent = `#${best.rank}`;
+      document.getElementById("riskCount").textContent = indicators.filter(d => band(d) === "bottom").length;
+    }
+
+    function renderRadar() {
+      const axes = ["Economy", "Innovation", "Technology", "People", "Sustainability", "Governance", "Rights", "Environment"];
+      const values = axes.map(axis => {
+        const matches = indicators.filter(d => d.category === axis || (axis === "Governance" && d.category === "Governance"));
+        if (!matches.length && axis === "People") return pct(indicators.find(d => d.id === "hdi"));
+        if (!matches.length) return 45;
+        return Math.round(matches.reduce((sum, d) => sum + pct(d), 0) / matches.length);
+      });
+      const cx = 210, cy = 138, maxR = 96;
+      const points = values.map((v, i) => {
+        const angle = (-90 + i * 360 / values.length) * Math.PI / 180;
+        const r = maxR * (v / 100);
+        return [cx + Math.cos(angle) * r, cy + Math.sin(angle) * r];
+      });
+      const axisLines = values.map((_, i) => {
+        const angle = (-90 + i * 360 / values.length) * Math.PI / 180;
+        const x = cx + Math.cos(angle) * maxR;
+        const y = cy + Math.sin(angle) * maxR;
+        const tx = cx + Math.cos(angle) * (maxR + 34);
+        const ty = cy + Math.sin(angle) * (maxR + 25);
+        return `<line class="axis" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"></line><text x="${tx}" y="${ty}" text-anchor="middle">${axes[i]}</text>`;
+      }).join("");
+      const rings = [25, 50, 75, 100].map(v => `<circle class="ring" cx="${cx}" cy="${cy}" r="${maxR * v / 100}"></circle>`).join("");
+      document.getElementById("radar").innerHTML = `${rings}${axisLines}<polygon class="shape" points="${points.map(p => p.join(",")).join(" ")}"></polygon>${points.map(p => `<circle class="dot" cx="${p[0]}" cy="${p[1]}" r="4"></circle>`).join("")}`;
+      const strongest = [...indicators].sort((a, b) => pct(b) - pct(a)).slice(0, 4);
+      document.getElementById("rankStrip").innerHTML = strongest.map(d => `<div class="rank-pill"><b>${d.name}</b><span>#${d.rank} of ${d.total}</span></div>`).join("");
+    }
+
+    function renderCards() {
+      const q = searchEl.value.trim().toLowerCase();
+      const category = categoryEl.value;
+      const bandValue = bandEl.value;
+      let rows = indicators.filter(d => {
+        const hay = `${d.name} ${d.category} ${d.owner} ${d.why} ${d.trend}`.toLowerCase();
+        return (!q || hay.includes(q)) && (category === "All" || d.category === category) && (bandValue === "All" || band(d) === bandValue);
+      });
+      rows.sort((a, b) => {
+        if (sortEl.value === "risk") return (b.rank / b.total) - (a.rank / a.total);
+        if (sortEl.value === "category") return a.category.localeCompare(b.category) || a.rank - b.rank;
+        if (sortEl.value === "year") return b.year - a.year || a.rank - b.rank;
+        return (a.rank / a.total) - (b.rank / b.total);
+      });
+      indicatorsEl.innerHTML = rows.map(d => {
+        const rankPct = pct(d);
+        const trendColor = d.trend.toLowerCase().includes("down") ? "#b84848" : d.trend.toLowerCase().includes("up") ? "#28865f" : "#657184";
+        return `
+          <article class="indicator" style="--accent:${d.accent}; --w:${rankPct}%; --trend-color:${trendColor}">
+            <div class="indicator-head">
+              <div>
+                <h3>${d.name}</h3>
+                <div class="category">${d.category} - ${d.owner}</div>
+              </div>
+              <div class="rank"><strong>#${d.rank}</strong><span>of ${d.total}</span></div>
+            </div>
+            <div>
+              <div class="score-row"><span class="score">${d.score}</span><span class="trend">${d.trend}</span></div>
+              <div class="bar" aria-label="${rankPct} percentile"><span></span></div>
+            </div>
+            <p class="why">${d.why}</p>
+            <div class="card-actions">
+              <button class="mini-link" type="button" data-open="${d.id}">Explore</button>
+              <span class="quality">${d.year}</span>
+            </div>
+          </article>
+        `;
+      }).join("");
+      document.querySelectorAll("[data-open]").forEach(btn => btn.addEventListener("click", () => openDrawer(btn.dataset.open)));
+    }
+
+    function renderCompare() {
+      const item = indicators.find(d => d.id === compareIndicatorEl.value);
+      const countries = groups[peerGroupEl.value].filter(c => item.peers[c] !== undefined);
+      const values = countries.map(c => ({ country: c, rank: item.peers[c] })).sort((a, b) => a.rank - b.rank);
+      const svg = document.getElementById("compareChart");
+      const maxRank = item.total;
+      const w = 760, h = 300, left = 150, right = 34, top = 26, rowH = 34;
+      const bars = values.map((d, i) => {
+        const y = top + i * rowH;
+        const width = (w - left - right) * (1 - (d.rank - 1) / maxRank);
+        const color = d.country === "India" ? item.accent : "#9aa6b5";
+        return `<text class="bar-label" x="12" y="${y + 19}">${d.country}</text>
+          <rect x="${left}" y="${y + 4}" width="${Math.max(width, 4)}" height="20" rx="5" fill="${color}" opacity="${d.country === "India" ? "1" : ".52"}"></rect>
+          <text class="axis-label" x="${left + Math.max(width, 4) + 8}" y="${y + 19}">#${d.rank}</text>`;
+      }).join("");
+      svg.innerHTML = `<text class="axis-label" x="12" y="15">${item.name}: better rank extends farther right</text>${bars}`;
+      const india = values.find(d => d.country === "India");
+      const ahead = values.filter(d => d.rank < india.rank).map(d => d.country);
+      const behind = values.filter(d => d.rank > india.rank).map(d => d.country);
+      document.getElementById("compareTitle").textContent = `${item.name} comparison`;
+      document.getElementById("compareText").textContent = `India ranks #${india.rank} of ${item.total}. In this peer slice it trails ${ahead.length ? ahead.join(", ") : "no selected peer"} and leads ${behind.length ? behind.join(", ") : "no selected peer"}.`;
+    }
+
+    function renderTrend() {
+      const item = indicators.find(d => d.id === trendIndicatorEl.value);
+      const svg = document.getElementById("trendChart");
+      const data = item.trendData;
+      const w = 760, h = 300, left = 54, right = 24, top = 34, bottom = 44;
+      const minYear = Math.min(...data.map(d => d[0]));
+      const maxYear = Math.max(...data.map(d => d[0]));
+      const maxRank = Math.max(item.total, ...data.map(d => d[1]));
+      const x = year => left + (year - minYear) / Math.max(maxYear - minYear, 1) * (w - left - right);
+      const y = rank => top + (rank - 1) / (maxRank - 1) * (h - top - bottom);
+      const path = data.map((d, i) => `${i ? "L" : "M"}${x(d[0])},${y(d[1])}`).join(" ");
+      const points = data.map(d => `<circle cx="${x(d[0])}" cy="${y(d[1])}" r="4" fill="${item.accent}"></circle><text class="axis-label" x="${x(d[0])}" y="${y(d[1]) - 8}" text-anchor="middle">#${d[1]}</text>`).join("");
+      const years = data.map(d => `<text class="axis-label" x="${x(d[0])}" y="${h - 16}" text-anchor="middle">${d[0]}</text>`).join("");
+      svg.innerHTML = `
+        <text class="axis-label" x="12" y="18">${item.name} rank trend - lower line position is better rank</text>
+        <line x1="${left}" y1="${top}" x2="${left}" y2="${h - bottom}" stroke="#dbe1ea"></line>
+        <line x1="${left}" y1="${h - bottom}" x2="${w - right}" y2="${h - bottom}" stroke="#dbe1ea"></line>
+        <text class="axis-label" x="10" y="${top + 4}">#1</text>
+        <text class="axis-label" x="10" y="${h - bottom}">#${maxRank}</text>
+        <path d="${path}" fill="none" stroke="${item.accent}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+        ${points}${years}
+      `;
+    }
+
+    function renderSources() {
+      document.getElementById("sourceRows").innerHTML = indicators.map(d => `
+        <tr>
+          <td><strong>${d.name}</strong><br>${d.category}</td>
+          <td>${d.owner}</td>
+          <td>#${d.rank} of ${d.total}<br>${d.score} - ${d.year}</td>
+          <td><a href="${d.source}" target="_blank" rel="noreferrer">Source page</a></td>
+        </tr>
+      `).join("");
+    }
+
+    function openDrawer(id) {
+      const d = indicators.find(item => item.id === id);
+      document.getElementById("drawerTitle").textContent = d.name;
+      document.getElementById("drawerIntro").textContent = `${d.owner}, ${d.year}: India ranks #${d.rank} out of ${d.total}, with a listed value of ${d.score}.`;
+      document.getElementById("drawerDetails").innerHTML = `
+        <div class="detail-item"><b>Why it matters</b>${d.why}</div>
+        <div class="detail-item"><b>Recent movement</b>${d.trend}</div>
+        <div class="detail-item"><b>Relative percentile</b>${pct(d)} out of 100 after normalizing rank direction.</div>
+      `;
+      document.getElementById("drawerSource").href = d.source;
+      const drawer = document.getElementById("drawer");
+      drawer.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDrawer() {
+      const drawer = document.getElementById("drawer");
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+    }
+
+    function generateInsight() {
+      const lens = document.getElementById("insightLens").value;
+      let pool = indicators;
+      if (lens === "economy") pool = indicators.filter(d => ["Economy", "Innovation", "Technology"].includes(d.category));
+      if (lens === "people") pool = indicators.filter(d => ["People", "Equality", "Quality of Life"].includes(d.category));
+      if (lens === "institutions") pool = indicators.filter(d => ["Governance", "Rights"].includes(d.category));
+      if (lens === "environment") pool = indicators.filter(d => ["Environment", "Sustainability"].includes(d.category));
+      const strongest = [...pool].sort((a, b) => pct(b) - pct(a))[0];
+      const weakest = [...pool].sort((a, b) => pct(a) - pct(b))[0];
+      const improving = pool.filter(d => d.trend.toLowerCase().includes("up")).length;
+      const titleMap = {
+        balanced: "Balanced national progress",
+        economy: "Growth and competitiveness",
+        people: "People and quality of life",
+        institutions: "Governance and rights",
+        environment: "Environment and sustainability"
+      };
+      document.getElementById("insightTitle").textContent = titleMap[lens];
+      document.getElementById("insightText").textContent = `India's strongest signal in this lens is ${strongest.name} at #${strongest.rank} of ${strongest.total}. The weakest signal is ${weakest.name} at #${weakest.rank} of ${weakest.total}. ${improving} of ${pool.length} selected indicators show rank improvement or positive score movement, so the useful question is not only whether India is growing, but whether institutional capacity, inclusion, and environmental health are catching up with scale.`;
+    }
+
+    [searchEl, categoryEl, bandEl, sortEl].forEach(el => el.addEventListener("input", renderCards));
+    [compareIndicatorEl, peerGroupEl].forEach(el => el.addEventListener("input", renderCompare));
+    trendIndicatorEl.addEventListener("input", renderTrend);
+    document.getElementById("generateInsight").addEventListener("click", generateInsight);
+    document.getElementById("insightLens").addEventListener("input", generateInsight);
+    document.querySelectorAll("[data-close]").forEach(el => el.addEventListener("click", closeDrawer));
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeDrawer();
+    });
+
+    init();
+  </script>
+</body>
+</html>

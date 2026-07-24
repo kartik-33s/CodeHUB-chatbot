@@ -1,0 +1,262 @@
+﻿Lets Code  
+Development  Challenge 2026 
+India in the World, A Global Progress Dashboard
+Problem Statement
+India is one of the world's largest and fastest-growing economies. However, a country's progress cannot be measured by economic growth alone.
+Every year, leading international organizations such as the United Nations, World Bank, IMF, WHO, UNESCO, World Economic Forum, Transparency International, Reporters Without Borders, Oxford Insights, and many others publish global rankings and indices that evaluate countries across areas like economy, education, healthcare, governance, innovation, environment, technology, equality, and quality of life.
+These datasets are scattered across hundreds of reports, making it difficult for citizens, students, researchers, journalists, policymakers, and businesses to understand where India stands on the global stage.
+Your challenge is to build a modern, interactive platform that consolidates these global indicators into a single destination. The platform should help users explore India's rankings, compare them with other countries, analyze historical trends, understand the reasons behind each ranking, and generate meaningful insights using AI.
+The goal is not simply to display rankings, but to transform complex global data into an accessible, transparent, and engaging experience that helps users answer one fundamental question:
+How is India performing compared to the rest of the world, and where should it improve next?
+________________
+
+
+Objective
+Build a web application that aggregates trusted global datasets and enables users to:
+* View India's rankings across multiple international indices.
+* Compare India with any country.
+* Explore historical trends and ranking changes.
+* Visualize data using interactive charts, maps, and dashboards.
+* Generate AI-powered summaries and insights.
+* Access the original source behind every metric.
+* Understand India's strengths and areas for improvement through data-driven storytelling.
+________________
+
+
+Categories & Required Global Indicators
+🌍 Economy
+* GDP Rank
+* GDP (PPP) Rank
+* GDP per Capita Rank
+* GDP Growth Rate
+* Inflation Rate
+* Unemployment Rate
+* Public Debt to GDP
+* Ease of Doing Business (Historical)
+* Global Competitiveness Index
+* Global Innovation Index
+* Economic Freedom Index
+* Logistics Performance Index
+* Foreign Direct Investment (FDI)
+________________
+
+
+👥 Society
+* Human Development Index (HDI)
+* World Happiness Report
+* Social Progress Index
+* Quality of Life Index
+* Human Capital Index
+* Multidimensional Poverty Index
+* Cost of Living Index
+* Population Growth Rate
+* Urbanization Rate
+________________
+
+
+🏛 Governance
+* Corruption Perceptions Index
+* Democracy Index
+* Rule of Law Index
+* Press Freedom Index
+* Government Effectiveness
+* Political Stability Index
+* Regulatory Quality
+* Voice & Accountability
+* Open Budget Index
+________________
+
+
+💻 Technology & Innovation
+* AI Readiness Index
+* Global Innovation Index
+* Network Readiness Index
+* Global Cybersecurity Index
+* Startup Ecosystem Ranking
+* ICT Development Index
+* Internet Penetration
+* Broadband Speed Ranking
+* Mobile Connectivity Index
+* R&D Expenditure
+* Patents per Million Population
+________________
+
+
+🎓 Education
+* Education Index
+* Literacy Rate
+* School Enrollment Rate
+* QS World University Rankings
+* Times Higher Education Rankings
+* PISA Rankings
+* Global Skills Index
+* Student Teacher Ratio
+________________
+
+
+🏥 Healthcare
+* Healthcare Index
+* Universal Health Coverage Index
+* Healthcare Access & Quality Index
+* Life Expectancy
+* Infant Mortality
+* Maternal Mortality
+* Physicians per 1,000 People
+* Hospital Beds per 1,000 People
+* Vaccination Coverage
+________________
+
+
+🌱 Environment
+* Environmental Performance Index
+* Climate Change Performance Index
+* Air Quality Ranking
+* CO₂ Emissions per Capita
+* Renewable Energy Share
+* Forest Cover
+* Water Stress Index
+* Climate Risk Index
+* Sustainable Development Goals (SDG) Score
+________________
+
+
+🛡 Safety
+* Global Peace Index
+* Crime Index
+* Safety Index
+* Terrorism Index
+* Road Safety Ranking
+* Disaster Risk Index
+________________
+
+
+⚖ Equality
+* Global Gender Gap Index
+* Gender Inequality Index
+* Gini Coefficient
+* Women's Economic Participation
+* Female Labour Force Participation
+* Equal Pay Indicators
+________________
+
+
+🌐 Digital Government
+* E-Government Development Index
+* E-Participation Index
+* GovTech Maturity Index
+* Open Data Inventory
+* Digital Competitiveness Ranking
+________________
+
+
+Core Features
+Participants should build a platform that includes:
+* Global dashboard for India
+* Country comparison dashboard
+* Interactive world map
+* Historical trend analysis
+* Search and filter across all indicators
+* Category-wise ranking explorer
+* Source attribution for every dataset
+* Responsive user interface
+* AI-powered insights and summaries
+________________
+
+
+Bonus Features
+Teams are encouraged to innovate by including features such as:
+* AI chatbot for answering questions about India's rankings.
+* Natural language search, such as "Show India's innovation ranking."
+* AI-generated annual report cards.
+* Ranking predictions using historical trends.
+* News integration to explain ranking changes.
+* Personalized watchlists.
+* Export reports as PDF or CSV.
+* State-level comparisons where data is available.
+* Data quality and confidence indicators.
+* Accessibility features for a wider audience.
+________________
+
+
+Data Sources
+Participants should use publicly available and trusted datasets from organizations such as:
+* World Bank
+* International Monetary Fund (IMF)
+* United Nations (UN)
+* UNDP
+* WHO
+* UNESCO
+* OECD
+* World Economic Forum (WEF)
+* Transparency International
+* Reporters Without Borders
+* Oxford Insights
+* World Justice Project
+* ITU
+* WIPO
+* StartupBlink
+* Yale Environmental Performance Index
+* Germanwatch
+* IQAir
+* Numbeo
+* Our World in Data
+________________
+
+
+Judging Criteria
+Criteria
+	Weight
+	Problem Understanding
+	15%
+	Data Coverage & Accuracy
+	20%
+	User Experience & Design
+	20%
+	Data Visualization
+	15%
+	AI Integration
+	15%
+	Technical Implementation
+	10%
+	Innovation & Impact
+	5%
+	________________
+
+
+Deliverables
+Each participant should submit:
+* Source code hosted on GitHub.
+* A deployed web application.
+* A short demo video (3 to 5 minutes).
+* Documentation explaining the architecture, data sources, and implementation.
+* A README with setup instructions.
+________________
+
+
+Expected Outcome
+By the end of this challenge, participants should deliver a platform that makes global development data easy to explore, compare, and understand. Rather than presenting isolated rankings, the solution should provide a holistic view of India's performance across economic, social, technological, environmental, and governance dimensions, empowering users with clear, data-driven insights.
+Eligibility
+The Lets Code Development Challenge 2026 is open to everyone. Students, professionals, open source contributors, freelancers, and developers from any country are welcome to participate. Post your daily updates on the community feed :https://www.lets-code.co.in/feed/
+Prizes
+* 🏆 Winner: ₹2,000 + Certificate
+* 🥈 Runner-up: ₹1,500 + Certificate
+* 🥉 Second Runner-up: ₹1000 + Certificate
+All valid submissions will receive a Certificate of Participation.
+⏰ Submission Deadline: 12:00 PM IST, Sunday, 27 July 
+Submission Google form - https://docs.google.com/forms/d/16ABbsb9FlhuaJmtYhp4sUa_aQ8H49nT68LE8_bZvgTQ/preview
+For any queries and discussion post on the community feed - https://www.lets-code.co.in/feed/
+Sponsor the Lets Code Development Challenge 2026
+Are you a company, startup, hiring team, or brand looking to connect with talented developers?
+Partner with the Lets Code Development Challenge 2026 and get your brand in front of a growing community of developers and tech enthusiasts.
+As a sponsor, you can receive:
+* Brand logo on all challenge announcements and assets
+* Social media mentions across Lets Code platforms
+* Featured placement in the challenge documentation
+* Access to showcase your company or product
+* Opportunity to share job and internship openings with participants
+* Recognition during the winner announcement
+If you're interested in sponsoring the challenge or adding prizes, we'd love to collaborate.
+📩 Reach out to discuss sponsorship opportunities and help us make this challenge even bigger for the community : letscode@lets-code.co.in
+
+
+Active communication on the community feed  - https://www.lets-code.co.in/feed/6a60caf2f0ea27d5645f3f36/
