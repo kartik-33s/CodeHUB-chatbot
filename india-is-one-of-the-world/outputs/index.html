@@ -547,92 +547,107 @@
 
     .world-map {
       width: 100%;
-      min-height: 420px;
+      min-height: 450px;
       display: block;
-      background: linear-gradient(180deg, #dfeef9 0%, #e8f4fc 100%);
-      border: 1px solid var(--line);
+      background: #0a1929;
+      border: 1px solid #1e3a5f;
       border-radius: 8px;
       overflow: visible;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
     }
 
     .country {
-      fill: #b8d4c8;
-      stroke: #8ba89a;
-      stroke-width: 0.5;
-      transition: all 0.2s ease;
+      fill: #6b9ac4;
+      stroke: #0a1929;
+      stroke-width: 0.8;
+      transition: all 0.3s ease;
       cursor: pointer;
+      opacity: 0.85;
     }
 
     .country:hover {
-      fill: #9cc4b0;
-      stroke: #6b9179;
-      stroke-width: 1;
+      fill: #8fb5d8;
+      opacity: 1;
+      stroke: #1e3a5f;
+      stroke-width: 1.2;
+      filter: brightness(1.1);
     }
 
     .country.india {
-      fill: #087f8c;
-      stroke: #065962;
+      fill: #ff6b35;
+      stroke: #d45a2a;
+      opacity: 1;
     }
 
     .country.india:hover {
-      fill: #0a99a8;
-      stroke: #044850;
+      fill: #ff8555;
+      stroke: #d45a2a;
+      filter: brightness(1.15);
     }
 
     .country.has-data {
-      fill: #c8dfd6;
+      fill: #87b5d8;
+      opacity: 0.9;
     }
 
     .country.has-data:hover {
-      fill: #a8cfbe;
+      fill: #a5c9e6;
+      opacity: 1;
     }
 
     .pin {
       cursor: pointer;
-      pointer-events: none;
+      pointer-events: all;
     }
 
     .pin circle {
-      fill: var(--blue);
+      fill: #ffd700;
       stroke: white;
-      stroke-width: 2.5;
-      transition: all 0.2s ease;
+      stroke-width: 2;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     }
 
     .pin:hover circle {
       r: 7;
-      fill: #4a7cd1;
+      fill: #ffed4e;
+      stroke: #ffd700;
+      stroke-width: 3;
     }
 
     .pin.india circle {
-      fill: var(--teal);
+      fill: #ff3366;
+      stroke: white;
     }
 
     .pin.india:hover circle {
-      fill: #0a99a8;
+      fill: #ff5588;
+      stroke: #ffddee;
     }
 
     .pin text {
-      fill: #253348;
+      fill: white;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       pointer-events: none;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .map-tooltip {
       position: absolute;
-      background: rgba(24, 33, 47, 0.95);
+      background: linear-gradient(135deg, #1e3a5f 0%, #0a1929 100%);
       color: white;
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 10px 14px;
+      border-radius: 8px;
       font-size: 12px;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.3s ease;
       z-index: 100;
-      max-width: 220px;
-      line-height: 1.4;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      max-width: 240px;
+      line-height: 1.5;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(135, 181, 216, 0.3);
     }
 
     .map-tooltip.show {
@@ -641,9 +656,20 @@
 
     .map-tooltip strong {
       display: block;
-      margin-bottom: 4px;
-      font-size: 13px;
+      margin-bottom: 6px;
+      font-size: 14px;
       color: #87ceeb;
+      font-weight: 700;
+    }
+
+    .map-tooltip .rank-badge {
+      display: inline-block;
+      background: #ff6b35;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 11px;
+      margin-top: 4px;
     }
 
     .map-detail {
@@ -1049,9 +1075,9 @@
       </div>
       <div class="map-grid">
         <div style="position: relative;">
-          <svg class="world-map" id="worldMap" viewBox="0 0 1000 500" role="img" aria-label="World map with comparison country pins">
-            <!-- Oceans/Background -->
-            <rect width="1000" height="500" fill="#dfeef9"/>
+          <svg class="world-map" id="worldMap" viewBox="0 0 1200 600" role="img" aria-label="World map with comparison country pins">
+            <!-- Dark blue ocean background -->
+            <rect width="1200" height="600" fill="#0a1929"/>
             
             <!-- Countries - Simplified world map -->
             <!-- North America -->
@@ -2059,7 +2085,7 @@
           const rank = peers[countryName];
           
           if (rank !== undefined) {
-            tooltip.innerHTML = `<strong>${countryName}</strong>Rank #${rank} of ${indicator.total}<br>${indicator.name} (${indicator.year})`;
+            tooltip.innerHTML = `<strong>${countryName}</strong>Rank: <span class="rank-badge">#${rank} of ${indicator.total}</span><br>${indicator.name} (${indicator.year})`;
           } else {
             tooltip.innerHTML = `<strong>${countryName}</strong>Data not available for this indicator`;
           }
@@ -2101,7 +2127,7 @@
         pin.addEventListener('mouseenter', (e) => {
           const country = pin.dataset.country;
           const rank = peers[country];
-          tooltip.innerHTML = `<strong>${country}</strong>Rank #${rank} of ${indicator.total}<br>${indicator.name} (${indicator.year})`;
+          tooltip.innerHTML = `<strong>${country}</strong>Rank: <span class="rank-badge">#${rank} of ${indicator.total}</span><br>${indicator.name} (${indicator.year})`;
           tooltip.classList.add('show');
         });
         
