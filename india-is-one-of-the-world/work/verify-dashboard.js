@@ -5,8 +5,8 @@ const { pathToFileURL } = require("url");
 
 const chrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const port = 9224;
-const userData = path.resolve("work", "chrome-profile-verify");
-const url = pathToFileURL(path.resolve("outputs/index.html")).href;
+const userData = path.resolve("india-is-one-of-the-world", "work", "chrome-profile-verify");
+const url = pathToFileURL(path.resolve("india-is-one-of-the-world", "outputs", "index.html")).href;
 const proc = spawn(chrome, [
   "--headless=new",
   "--disable-gpu",
